@@ -24,6 +24,17 @@ Enemy::Enemy() {
 }
 // Function move: move the enemy downwards untill the end of the scene then remove it and delete it
 void Enemy:: move() {
+    // check if the enemy hits the player
+    QList<QGraphicsItem *> collided_items = collidingItems();
+    foreach(auto& item, collided_items) {
+        if(typeid(*item) == typeid(Player)) {
+            // game over
+            game->showGameOverMsg();
+            return;
+        }
+    }
+
+    // move the enemy down
     setPos(x(),y()+5);
     if(y() > 600) {
         scene()->removeItem(this);
