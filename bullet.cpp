@@ -5,10 +5,11 @@
 #include <enemy.h>
 #include <player.h>
 
-Bullet::Bullet() : QObject(), QGraphicsRectItem() {
+Bullet::Bullet() : QObject(), QGraphicsPixmapItem() {
 
-    // *******  Setting the bullets' size ********
-    setRect(0,0,10,50);
+    // set the bullet's image
+    setPixmap(QPixmap(":/images/img/red_laser.png").scaled(35, 35));
+
     // *******  Generating the Bullets automatically ********
     QTimer * timer = new QTimer();
     connect(timer, SIGNAL(timeout()),this,SLOT (move()));
@@ -33,7 +34,7 @@ void Bullet:: move() {
 
     // *******  Moving the bullets upward ********
     setPos(x(), y() - offset);
-    if(y() + rect().height() < 0) {
+    if(y() + boundingRect().height() < 0) {
         scene()->removeItem(this);
         delete this;
     }
