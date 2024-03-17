@@ -9,7 +9,6 @@ Game::Game() {
 
     // *******  Create the Player ********
     player = new Player();
-    player->setRect(0, 0, 100, 100);
     scene->addItem(player);
 
     // *******  Setting the foucs to the Player ********

@@ -1,14 +1,11 @@
 #include "player.h"
+#include <QGraphicsScene>
 #include <QKeyEvent>
 #include "bullet.h"
-#include <QGraphicsScene>
-#include <QDebug>
-#include <QTimer>
-#include <QGraphicsView>
 #include "enemy.h"
 
 Player::Player() {
-
+    setPixmap(QPixmap(":/images/img/ship.png").scaled(100, 100));
 }
 
 void Player::keyPressEvent(QKeyEvent *event)
