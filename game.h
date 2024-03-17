@@ -15,6 +15,8 @@ public:
     QGraphicsScene* scene;
     Player* player;
     Health* health;
+    // methods
+    void showGameOverMsg();
 };
 
 #endif // GAME_H

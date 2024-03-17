@@ -1,5 +1,8 @@
 #include "health.h"
+#include "game.h"
 #include <QFont>
+
+extern Game* game;
 
 Health::Health() {
     // initialize heatlth to 3
@@ -14,6 +17,7 @@ Health::Health() {
 void Health::decrease() {
     health--;
     setPlainText("Health: " + QString::number(health));
+    if(!health) game->showGameOverMsg();
 }
 
 int Health::getHealthVal() {return health;}

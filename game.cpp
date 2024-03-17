@@ -1,5 +1,6 @@
 #include "game.h"
 #include <QImage>
+#include <QMessageBox>
 
 Game::Game() {
     setFixedSize(800, 600);
@@ -35,4 +36,24 @@ Game::Game() {
     QTimer * timer = new QTimer();
     connect(timer, SIGNAL(timeout()),player,SLOT(createEnemy()));
     timer->start(2000);
+}
+
+void Game::showGameOverMsg() {
+    // get the score from Score class
+    int score = 0;
+
+    // create a QMessageBox
+    QMessageBox* msgBox = new QMessageBox();
+    msgBox->setIcon(QMessageBox::Critical);
+    msgBox->setWindowTitle("Game Over!");
+    msgBox->setText("Your Score is " + QString::number(score));
+
+    // Increase font size
+    QFont font;
+    font.setPointSize(12);
+    msgBox->setFont(font);
+
+    // hide the game and show the game over message
+    hide();
+    msgBox->exec();
 }
