@@ -5,14 +5,16 @@
 #include <QTimer>
 #include <QGraphicsScene>
 #include "player.h"
+#include "health.h"
 
 class Game : public QGraphicsView
 {
     Q_OBJECT
 public:
     Game();
-    Player* player;
     QGraphicsScene* scene;
+    Player* player;
+    Health* health;
 };
 
 #endif // GAME_H

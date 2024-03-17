@@ -5,6 +5,9 @@
 #include <QDebug>
 #include <QMessageBox>
 #include <QGraphicsView>
+#include "game.h"
+
+extern Game* game;
 
 Enemy::Enemy() {
     // *******  Setting the size of the enemy ********
@@ -25,5 +28,6 @@ void Enemy:: move() {
     if(y() > 600) {
         scene()->removeItem(this);
         delete this;
+        game->health->decrease();
     }
 }

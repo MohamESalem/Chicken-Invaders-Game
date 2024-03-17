@@ -16,10 +16,14 @@ Game::Game() {
     player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
 
-
     // *******  Adjust the location of the Player (middle of the screen) ********
     int playerLength = 100;
     player->setPos(width()/2 - playerLength/2, height() - playerLength);
+
+    // Add health
+    health = new Health();
+    health->setPos(0, 25);
+    scene->addItem(health);
 
     // *******   Assign scene to the view   ***************
     setScene(scene);

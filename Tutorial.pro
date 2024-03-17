@@ -12,6 +12,7 @@ SOURCES += \
     bullet.cpp \
     enemy.cpp \
     game.cpp \
+    health.cpp \
     main.cpp \
     player.cpp
 
@@ -19,6 +20,7 @@ HEADERS += \
     bullet.h \
     enemy.h \
     game.h \
+    health.h \
     player.h
 
 # Default rules for deployment.
