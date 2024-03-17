@@ -1,7 +1,9 @@
 #include "game.h"
+#include <QImage>
 
 Game::Game() {
     setFixedSize(800, 600);
+    setBackgroundBrush(QBrush(QImage(":/images/img/bg_img.jpg")));
 
     // ******* Create the Scene ********
     scene = new QGraphicsScene();

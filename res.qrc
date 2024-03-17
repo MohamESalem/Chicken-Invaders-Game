@@ -3,5 +3,6 @@
         <file>img/ship.png</file>
         <file>img/red_laser.png</file>
         <file>img/chicken.png</file>
+        <file>img/bg_img.jpg</file>
     </qresource>
 </RCC>
