@@ -11,7 +11,7 @@ extern Game* game;
 
 Enemy::Enemy() {
     // *******  Setting the size of the enemy ********
-    setRect(0,0,100,100);
+    setPixmap(QPixmap(":/images/img/chicken.png").scaled(80, 80));
 
     // *******  Setting the postion of the enemy within the view dimensions ********
     int random_number = rand() % 701;
