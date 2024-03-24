@@ -1,2 +1,2 @@
 # Chicken-Invaders-Game
-![plot](./img/screenshots/1.png)
+![plot](./img/screenshots/game.png)
