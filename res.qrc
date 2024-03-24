@@ -5,4 +5,8 @@
         <file>img/chicken.png</file>
         <file>img/bg_img.jpg</file>
     </qresource>
+    <qresource prefix="/sound">
+        <file>sound/bullet.mp3</file>
+        <file>sound/chicken.mp3</file>
+    </qresource>
 </RCC>

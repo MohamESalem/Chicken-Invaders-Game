@@ -4,6 +4,8 @@
 #include <QGraphicsTextItem>
 #include <QTimer>
 #include <QFont>
+#include <QMediaPlayer>
+
 
 //external global variable to access the score
 extern Game* game;

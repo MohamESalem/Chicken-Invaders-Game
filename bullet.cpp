@@ -17,6 +17,11 @@ Bullet::Bullet() : QObject(), QGraphicsPixmapItem() {
     QTimer * timer = new QTimer();
     connect(timer, SIGNAL(timeout()),this,SLOT (move()));
     timer->start(50);
+    killSound =  new QMediaPlayer;
+    audioOutput =  new QAudioOutput;
+    killSound->setAudioOutput(audioOutput);
+    killSound->setSource(QUrl::fromEncoded("qrc:/sound/sound/chicken.mp3"));
+    audioOutput->setVolume(25);
 
 }
 
@@ -34,6 +39,7 @@ void Bullet:: move() {
             // ****remove bullet from the scene*******
             scene()->removeItem(item);
             scene()->removeItem(this);
+            killSound->play();
             delete item;
             delete this;
             return;

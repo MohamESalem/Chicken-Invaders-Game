@@ -6,7 +6,13 @@
 
 Player::Player() {
     setPixmap(QPixmap(":/images/img/ship.png").scaled(100, 100));
+    bulletSound =  new QMediaPlayer;
+    audioOutput =  new QAudioOutput;
+    bulletSound->setAudioOutput(audioOutput);
+    bulletSound->setSource(QUrl::fromEncoded("qrc:/sound/sound/bullet.mp3"));
+    audioOutput->setVolume(25);
 }
+
 
 void Player::keyPressEvent(QKeyEvent *event)
 {
@@ -19,13 +25,17 @@ void Player::keyPressEvent(QKeyEvent *event)
         if(x() + 100 < 800) // to prevent the player from getting out of the screen
             setPos(x()+offset,y());
     } else if(event->key()== Qt::Key_Space) {
+        bulletSound->stop();
         Bullet * bullet = new Bullet();
         Bullet * bullet2 = new Bullet();
 
+        bulletSound->play();
         bullet->setPos(x(),y());
         bullet2->setPos(x()+60,y());
         scene()->addItem(bullet);
         scene()->addItem(bullet2);
+        // Playing bullet sound
+
 
     }
 }
