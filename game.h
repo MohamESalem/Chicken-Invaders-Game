@@ -2,10 +2,13 @@
 #define GAME_H
 
 #include <QGraphicsView>
+#include <QWidget>
 #include <QTimer>
 #include <QGraphicsScene>
 #include "player.h"
 #include "health.h"
+#include "Score.h"
+
 
 class Game : public QGraphicsView
 {
@@ -15,6 +18,7 @@ public:
     QGraphicsScene* scene;
     Player* player;
     Health* health;
+    Score* score;
     // methods
     void showGameOverMsg();
 };

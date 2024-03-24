@@ -20,8 +20,13 @@ void Player::keyPressEvent(QKeyEvent *event)
             setPos(x()+offset,y());
     } else if(event->key()== Qt::Key_Space) {
         Bullet * bullet = new Bullet();
+        Bullet * bullet2 = new Bullet();
+
         bullet->setPos(x(),y());
+        bullet2->setPos(x()+60,y());
         scene()->addItem(bullet);
+        scene()->addItem(bullet2);
+
     }
 }
  // CreateEnemy function used to create the eneimes

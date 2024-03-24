@@ -1,6 +1,12 @@
 #include "game.h"
 #include <QImage>
 #include <QMessageBox>
+#include <QGraphicsTextItem>
+#include <QTimer>
+#include <QFont>
+
+//external global variable to access the score
+extern Game* game;
 
 Game::Game() {
     setFixedSize(800, 600);
@@ -17,6 +23,10 @@ Game::Game() {
     // *******  Setting the foucs to the Player ********
     player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
+
+    // ************ Create the Score **************
+    score = new Score();
+    scene->addItem(score);
 
     // *******  Adjust the location of the Player (middle of the screen) ********
     int playerLength = 100;
@@ -40,7 +50,7 @@ Game::Game() {
 
 void Game::showGameOverMsg() {
     // get the score from Score class
-    int score = 0;
+    int score = game->score->getScore();
 
     // create a QMessageBox
     QMessageBox* msgBox = new QMessageBox();

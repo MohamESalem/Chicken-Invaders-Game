@@ -4,6 +4,9 @@
 #include <QList>
 #include <enemy.h>
 #include <player.h>
+#include "Game.h"
+
+extern Game * game; //external global variable
 
 Bullet::Bullet() : QObject(), QGraphicsPixmapItem() {
 
@@ -14,6 +17,7 @@ Bullet::Bullet() : QObject(), QGraphicsPixmapItem() {
     QTimer * timer = new QTimer();
     connect(timer, SIGNAL(timeout()),this,SLOT (move()));
     timer->start(50);
+
 }
 
 // Move function is used to 1-  move the bullet upwards
@@ -24,6 +28,10 @@ void Bullet:: move() {
     QList<QGraphicsItem *> collided_items = collidingItems();
     foreach(auto& item, collided_items) {
         if(typeid(*item) == typeid(Enemy)) {
+
+            // ***** increase score **********
+            game->score->increase();
+            // ****remove bullet from the scene*******
             scene()->removeItem(item);
             scene()->removeItem(this);
             delete item;
