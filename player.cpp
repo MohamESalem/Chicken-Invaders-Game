@@ -6,6 +6,7 @@
 
 Player::Player() {
     setPixmap(QPixmap(":/images/img/ship.png").scaled(100, 100));
+    setTransformOriginPoint(50, 50);
     bulletSound =  new QMediaPlayer;
     audioOutput =  new QAudioOutput;
     bulletSound->setAudioOutput(audioOutput);
@@ -18,12 +19,19 @@ void Player::keyPressEvent(QKeyEvent *event)
 {
         // *******  Event Handling for the Player ********
     int offset = 10;
+    int rotAngle = 8;
     if(event->key()== Qt::Key_Left) {
-        if(x()>0) // to prevent the player from getting out of the screen
+        // to prevent the player from getting out of the screen
+        if(x()>0) {
             setPos(x()-offset,y());
+            setRotation(-rotAngle);
+        }
     } else if(event->key()== Qt::Key_Right) {
-        if(x() + 100 < 800) // to prevent the player from getting out of the screen
+        // to prevent the player from getting out of the screen
+        if(x() + 100 < 800) {
             setPos(x()+offset,y());
+            setRotation(rotAngle);
+        }
     } else if(event->key()== Qt::Key_Space) {
         bulletSound->stop();
         Bullet * bullet = new Bullet();
@@ -34,11 +42,14 @@ void Player::keyPressEvent(QKeyEvent *event)
         bullet2->setPos(x()+60,y());
         scene()->addItem(bullet);
         scene()->addItem(bullet2);
-        // Playing bullet sound
-
-
     }
 }
+
+void Player::keyReleaseEvent(QKeyEvent* event) {
+    if(event->key())
+        setRotation(0);
+}
+
  // CreateEnemy function used to create the eneimes
 void Player::createEnemy() {
   Enemy* enemy = new Enemy();
